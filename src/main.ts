@@ -13,10 +13,10 @@ async function bootstrap() {
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api/swagger', app, document);
+  SwaggerModule.setup('swagger', app, document);
 
   await app.listen(PORT, () => {
-    console.log(`listened at http://localhost:${process.env.PORT}/api/swagger`);
+    console.log(` http://localhost:${process.env.PORT}/swagger`);
   });
 }
 bootstrap();

@@ -191,7 +191,7 @@ export class DiscountRepo {
     if (data.old_price !== undefined) updateData.old_price = data.old_price;
     if (data.description !== undefined)
       updateData.description = data.description;
-
+    updateData.updated_at = db1.fn.now();
     if (Object.keys(updateData).length === 0) {
       throw new BadRequestException('No fields provided for update');
     }
@@ -209,6 +209,6 @@ export class DiscountRepo {
     if (!res.rows[0]) {
       throw new NotFoundException(`Discount with ID ${id} not found`);
     }
-    return res.rows[0];
+    return { success: true, deletedData: res.rows[0] };
   }
 }
